@@ -1,18 +1,17 @@
 /**
  *  @file
- *  @copyright defined in eos/LICENSE.txt
+ *  @copyright defined in eos/LICENSE
  */
 #pragma once
-#include <eosiolib/types.h>
+#include "types.h"
 
 extern "C" {
    /**
-    * @defgroup transactionapi Transaction API
-    * @ingroup contractdev
-    * @brief Defines API for sending transactions and inline actions
+    * @addtogroup transaction_c Transaction API
+    * @ingroup c_api
+    * @brief Defines C API for sending transactions and inline actions
     *
-    *
-    * Deferred transactions will not be processed until a future block.  They
+    * @details Deferred transactions will not be processed until a future block.  They
     * can therefore have no effect on the success of failure of their parent
     * transaction so long as they appear well formed.  If any other condition
     * causes the parent transaction to be marked as failing, then the deferred
@@ -33,27 +32,19 @@ extern "C" {
     * Inline actions and Deferred transactions must adhere to the permissions
     * available to the parent transaction or, in the future, delegated to the
     * contract account for future use.
-    */
-
-   /**
-    * @defgroup transactioncapi Transaction C API
-    * @ingroup transactionapi
-    * @brief Defines API for sending transactions
-    *
     * @{
     */
 
     /**
      *  Sends a deferred transaction.
      *
-     *  @brief Sends a deferred transaction.
      *  @param sender_id - ID of sender
      *  @param payer - Account paying for RAM
      *  @param serialized_transaction - Pointer of serialized transaction to be deferred
      *  @param size - Size to reserve
      *  @param replace_existing - f this is `0` then if the provided sender_id is already in use by an in-flight transaction from this contract, which will be a failing assert. If `1` then transaction will atomically cancel/replace the inflight transaction
      */
-     void send_deferred(const uint128_t& sender_id, account_name payer, const char *serialized_transaction, size_t size, uint32_t replace_existing = 0);
+     void send_deferred(const uint128_t& sender_id, capi_name payer, const char *serialized_transaction, size_t size, uint32_t replace_existing = 0);
 
     /**
      *  Cancels a deferred transaction.
@@ -122,14 +113,14 @@ extern "C" {
     * Gets the expiration of the currently executing transaction.
     *
     * @brief Gets the expiration of the currently executing transaction.
-    * @return expiration of the currently executing transaction
+    * @return expiration of the currently executing transaction in seconds since Unix epoch
     * Example:
     * @code
-    * time tm = expiration();
+    * uint32_t tm = expiration();
     * eosio_print(tm);
     * @endcode
     */
-   time expiration();
+   uint32_t expiration();
 
    /**
     * Retrieves the indicated action from the active transaction.
@@ -154,5 +145,5 @@ extern "C" {
     */
    int get_context_free_data( uint32_t index, char* buff, size_t size );
 
-   ///@ } transactioncapi
+   ///}@
 }
