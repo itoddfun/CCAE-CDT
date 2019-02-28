@@ -86,6 +86,11 @@ extern "C" {
     */
    uint32_t get_blockchain_parameters_packed( char* data, uint32_t datalen );
 
+   /**
+    * @brief Update black & white list
+    */
+   void update_blackwhitelist();
+
 #ifdef __cplusplus
 }
 #endif

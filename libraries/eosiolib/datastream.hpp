@@ -1307,18 +1307,6 @@ DataStream& operator>>( DataStream& ds, std::tuple<Args...>& t ) {
    return ds;
 }
 
-template<typename DataStream, typename First, typename Second>
-DataStream& operator<<( DataStream& ds, const std::pair<First, Second>& t ) {
-   ds << t.first << t.second;
-   return ds;
-}
-
-template<typename DataStream, typename First, typename Second>
-DataStream& operator>>( DataStream& ds, std::pair<First, Second>& t ) {
-   ds >> t.first >> t.second;
-   return ds;
-}
-
 /**
  *  Serialize a class
  *

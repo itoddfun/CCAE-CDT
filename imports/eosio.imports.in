@@ -50,6 +50,7 @@ get_blockchain_parameters_packed
 set_blockchain_parameters_packed
 is_privileged
 set_privileged
+update_blackwhitelist
 get_active_producers
 db_idx64_store
 db_idx64_remove

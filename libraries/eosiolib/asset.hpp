@@ -3,7 +3,6 @@
 #include "print.hpp"
 #include "system.hpp"
 #include "symbol.hpp"
-#include "symbol.h"
 
 #include <tuple>
 #include <limits>
@@ -50,8 +49,6 @@ namespace eosio {
          eosio::check( is_amount_within_range(), "magnitude of asset amount must be less than 2^62" );
          eosio::check( symbol.is_valid(),        "invalid symbol name" );
       }
-
-      explicit asset( int64_t a = 0 ) : asset(a, core_symbol()) {}
 
       /**
        * Check if the amount doesn't exceed the max amount
