@@ -304,11 +304,20 @@ extern "C" {
    bool is_account( capi_name name ) {
       return intrinsics::get().call<intrinsics::is_account>(name);
    }
+   bool is_inline() {
+      return intrinsics::get().call<intrinsics::is_inline>();
+   }
    size_t read_transaction(char *buffer, size_t size) {
       return intrinsics::get().call<intrinsics::read_transaction>(buffer, size);
    }
    size_t transaction_size() {
       return intrinsics::get().call<intrinsics::transaction_size>();
+   }
+   void get_transaction_id( capi_checksum256* id ) {
+      return intrinsics::get().call<intrinsics::get_transaction_id>(id);
+   }
+   void get_action_sequence( uint64_t* seq ) {
+      return intrinsics::get().call<intrinsics::get_action_sequence>(seq);
    }
    uint32_t expiration() {
       return intrinsics::get().call<intrinsics::expiration>();

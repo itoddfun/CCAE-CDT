@@ -121,6 +121,8 @@ extern "C" {
     */
    bool is_account( capi_name name );
 
+   bool is_inline();
+
    /**
     *  Send an inline action in the context of this action's parent transaction
     *

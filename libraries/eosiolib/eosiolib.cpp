@@ -2,6 +2,8 @@
 #include "memory.hpp"
 #include "privileged.hpp"
 
+#include "random.cpp"
+
 #ifdef EOSIO_NATIVE
 extern "C" {
    size_t __builtin_wasm_current_memory();

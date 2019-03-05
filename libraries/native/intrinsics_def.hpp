@@ -134,6 +134,7 @@ intrinsic_macro(require_auth) \
 intrinsic_macro(require_auth2) \
 intrinsic_macro(has_auth) \
 intrinsic_macro(is_account) \
+intrinsic_macro(is_inline) \
 intrinsic_macro(prints) \
 intrinsic_macro(prints_l) \
 intrinsic_macro(printi) \
@@ -147,6 +148,8 @@ intrinsic_macro(printn) \
 intrinsic_macro(printhex) \
 intrinsic_macro(read_transaction) \
 intrinsic_macro(transaction_size) \
+intrinsic_macro(get_transaction_id) \
+intrinsic_macro(get_action_sequence) \
 intrinsic_macro(expiration) \
 intrinsic_macro(tapos_block_prefix) \
 intrinsic_macro(tapos_block_num) \
