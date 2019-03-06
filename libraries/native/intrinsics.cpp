@@ -8,6 +8,7 @@
 #include <eosiolib/system.h>
 #include <eosiolib/transaction.h>
 #include <eosiolib/types.h>
+#include <eosiolib/random.h>
 #include "intrinsics.hpp"
 #include "crt.hpp"
 #include <softfloat.hpp>
@@ -345,6 +346,12 @@ extern "C" {
    }
    int get_context_free_data( uint32_t index, char* buff, size_t size ) {
       return intrinsics::get().call<intrinsics::get_context_free_data>(index, buff, size);
+   }
+   int random_seed( const char* sig, size_t siglen ) {
+      return intrinsics::get().call<intrinsics::random_seed>(sig, siglen);
+   }
+   int producer_random_seed( const char* sig, size_t siglen ) {
+      return intrinsics::get().call<intrinsics::producer_random_seed>(sig, siglen);
    }
 
    // softfloat

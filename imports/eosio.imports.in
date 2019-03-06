@@ -217,6 +217,8 @@ send_context_free_inline
 send_deferred
 cancel_deferred
 get_context_free_data
+random_seed
+producer_random_seed
 memcpy
 memmove
 memcmp
