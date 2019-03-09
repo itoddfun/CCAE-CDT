@@ -21,7 +21,7 @@ namespace eosio {
       bytes receipt_action;
    };
 
-   struct [[eosio::table]] peer_contract {
+   struct [[eosio::table("peer"), eosio::contract("icp")]] peer_contract {
       name peer = name();
 
       uint64_t last_outgoing_packet_seq = 0;
