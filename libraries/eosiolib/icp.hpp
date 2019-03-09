@@ -5,6 +5,8 @@
 
 namespace eosio {
 
+   using bytes = std::vector<char>;
+
    enum class receipt_status : uint8_t {
       unknown = 0,
       executed = 1,
@@ -20,7 +22,7 @@ namespace eosio {
    };
 
    struct [[eosio::table]] peer_contract {
-      account_name peer = 0;
+      name peer = name();
 
       uint64_t last_outgoing_packet_seq = 0;
       uint64_t last_incoming_packet_seq = 0; // to validate
@@ -38,11 +40,11 @@ namespace eosio {
       }
    };
 
-   typedef eosio::singleton<N(peer), peer_contract> peer_singleton;
+   typedef eosio::singleton<"peer"_n, peer_contract> peer_singleton;
 
-   uint64_t next_packet_seq(account_name code) {
-      auto peer = peer_singleton(code, code).get_or_default(peer_contract{});
-      eosio_assert(peer.peer, "empty peer icp contract");
+   uint64_t next_packet_seq(name code) {
+      auto peer = peer_singleton(code, code.value).get_or_default(peer_contract{});
+      eosio_assert(bool(peer.peer), "empty peer icp contract");
       return peer.last_outgoing_packet_seq + 1;
    }
 }
